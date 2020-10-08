@@ -1,0 +1,5 @@
+sudo service motion start
+
+sudo service motion stop
+
+sudo nano /etc/motion/motion.conf
