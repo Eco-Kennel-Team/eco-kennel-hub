@@ -35,9 +35,6 @@
     done = Event()
     Timer(5.0, every_so_often).start()
 
-    for count in range(100_000_000):
-        prod = count * count
-        if count % 10_000_000 == 0:
-            print('multiplied up to', count)
+    print("waiting to check temp")
 
     done.set()
