@@ -1,5 +1,11 @@
 from threading import Timer, Event
 
+#motion sensor set up
+GPIO.setwarnings(False)
+GPIO.setmode(GPIO.BOARD)
+GPIO.setup(11, GPIO.IN)
+
+
 def check_the_temp():
     if not done.is_set():
         #get the temp
@@ -25,7 +31,7 @@ def check_the_temp():
                 return temp_c
 
         while True:
-            print(read_temp())
+            print(read_temp())  #send temperature update to server
             time.sleep(1)
 
         Timer(5.0, check_the_temp).start()
@@ -33,6 +39,18 @@ def check_the_temp():
 done = Event()
 Timer(5.0, every_so_often).start()
 
-print("waiting to check temp")  #this is where all other code goes
+#this is where all other code goes
+
+#MOTION sensor code ------------------------------------------------------
+motionFlag = False
+motionCount = 0
+
+while True:
+    if i == 0:
+        #no MOTION
+    elif i == 1:
+        #motion detected
+        motionCount ++
+
 
 done.set()
